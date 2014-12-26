@@ -1,0 +1,52 @@
+{
+  "name": "grunt-ebookr",
+  "description": "A Grunt plugin for ebookr",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ebookr/grunt-ebookr",
+  "author": {
+    "name": "Arne Hassel",
+    "email": "arne.hassel@gmail.com",
+    "url": "http://icanhasweb.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ebookr/grunt-ebookr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ebookr/grunt-ebookr/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ebookr/grunt-ebookr/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "growl": "^1.8.1",
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-test": "^0.12.4",
+    "load-grunt-config": "^0.16.0",
+    "load-grunt-tasks": "^2.0.0",
+    "mocha": "^2.1.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "ebookr": "^0.2.2"
+  }
+}
