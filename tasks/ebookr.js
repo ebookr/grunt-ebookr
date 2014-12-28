@@ -8,21 +8,26 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+var ebookr = require('ebookr'),
+    randomstring = require('randomstring'),
+    util = require('util'),
+    q = require('q');
 
+module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
   grunt.registerMultiTask('ebookr', 'A Grunt plugin for ebookr', function() {
+    var done = this.async();
+
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       punctuation: '.',
-      separator: ', '
+      separator: '\n\n'
     });
 
     // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
+    var promises = this.files.map(function(f) {
       var src = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
@@ -32,19 +37,19 @@ module.exports = function(grunt) {
           return true;
         }
       }).map(function(filepath) {
-        // Read file source.
         return grunt.file.read(filepath);
       }).join(grunt.util.normalizelf(options.separator));
-
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      var converted = ebookr.parse(src).render();
+      var tmpFilePath = util.format("./%s.md", randomstring.generate());
+      grunt.file.write(tmpFilePath, converted);
+      var promise = ebookr.pandoc.convert(tmpFilePath, { output: f.dest });
+      promise.then(function () {
+        grunt.file.delete(tmpFilePath);
+      });
+      return promise;
+    });
+    q.all(promises).then(function () {
+      done();
     });
   });
-
 };

@@ -47,6 +47,8 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "ebookr": "^0.2.2"
+    "ebookr": "^0.2.4",
+    "q": "^1.1.2",
+    "randomstring": "^1.0.3"
   }
 }
