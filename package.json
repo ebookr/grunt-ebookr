@@ -1,13 +1,9 @@
 {
   "name": "grunt-ebookr",
   "description": "A Grunt plugin for ebookr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/ebookr/grunt-ebookr",
-  "author": {
-    "name": "Arne Hassel",
-    "email": "arne.hassel@gmail.com",
-    "url": "http://icanhasweb.net"
-  },
+  "author": "Arne Hassel <arne.hassel@gmail.com> (http://icanhasweb.net)",
   "repository": {
     "type": "git",
     "url": "git://github.com/ebookr/grunt-ebookr.git"
@@ -47,8 +43,13 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "ebookr": "^0.2.4",
+    "ebookr": "^0.2.5",
     "q": "^1.1.2",
     "randomstring": "^1.0.3"
-  }
+  },
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "license": "MIT"
 }
