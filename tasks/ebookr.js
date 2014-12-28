@@ -27,6 +27,7 @@ module.exports = function(grunt) {
     });
 
     // Iterate over all specified file groups.
+    var taskOptions = this.data.options || {};
     var promises = this.files.map(function(f) {
       var src = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
@@ -43,8 +44,13 @@ module.exports = function(grunt) {
       var tmpFilePath = util.format("./%s.md", randomstring.generate());
       grunt.file.write(tmpFilePath, converted);
       var promise = ebookr.pandoc.convert(tmpFilePath, { output: f.dest });
-      promise.then(function () {
+      promise.then(function (error, stdout, stderr) {
+        if (taskOptions.verbose) {
+          if (stdout) grunt.log.println(stdout);
+          if (stderr) grunt.log.errorln(stderr);
+        }
         grunt.file.delete(tmpFilePath);
+        grunt.log.writeln(util.format('%s created', f.dest))
       });
       return promise;
     });
