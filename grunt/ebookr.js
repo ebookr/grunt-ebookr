@@ -5,6 +5,6 @@ module.exports = {
   },
   multipleFiles: {
   	src: ['test/fixtures/1.md', 'test/fixtures/2.md'],
-  	desc: 'test/output/2.html'
+  	dest: 'test/output/2.html'
   }
 };
