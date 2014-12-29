@@ -25,4 +25,14 @@ describe('When converting files', function () {
       done();
     });
   });
+
+  it('should support metadata', function (done) {
+    exec('grunt ebookr:withMetadata', function (error, stdout, stderr) {
+      var actual = grunt.file.read('./test/output/3.html');
+      var expected = grunt.file.read('./test/expected/3.html');
+      expect(actual).to.eql(expected);
+      grunt.file.delete('./test/output/3.html');
+      done();
+    });
+  });
 });

@@ -40,10 +40,25 @@ module.exports = function(grunt) {
       }).map(function(filepath) {
         return grunt.file.read(filepath);
       }).join(grunt.util.normalizelf(options.separator));
+      if (taskOptions.verbose) {
+        grunt.log.writeln('File converted');
+        grunt.log.writeln('--------------');
+        src.split('\n').forEach(function (line) {
+          grunt.log.writeln(line);
+        });
+      }
       var converted = ebookr.parse(src).render();
-      var tmpFilePath = util.format("./%s.md", randomstring.generate());
+      var tmpFilePath = util.format("%s.md", randomstring.generate());
       grunt.file.write(tmpFilePath, converted);
-      var promise = ebookr.pandoc.convert(tmpFilePath, { output: f.dest });
+      taskOptions.output = f.dest;
+      if (!taskOptions.metadata) {
+        if (grunt.file.exists('metadata.yaml')) {
+          taskOptions.metadata = 'metadata.yaml';
+        } else {
+          grunt.log.debug('No manifest file given; might cause problems when converting to MOBI');
+        }
+      }
+      var promise = ebookr.pandoc.convert(tmpFilePath, taskOptions);
       promise.then(function (error, stdout, stderr) {
         if (taskOptions.verbose) {
           if (stdout) grunt.log.println(stdout);

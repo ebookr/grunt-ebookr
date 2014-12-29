@@ -1,6 +1,6 @@
 module.exports = {
 	'test': {
-    files: ['tasks/**/*.js', 'test/*.js'],
+    files: ['grunt/*.js', 'tasks/**/*.js', 'test/*.js', 'test/expected/*.*', 'test/fixtures/*.*'],
     tasks: ['test']
 	}
 };
