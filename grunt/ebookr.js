@@ -7,19 +7,12 @@ module.exports = {
   	src: ['test/fixtures/1.md', 'test/fixtures/2.md'],
   	dest: 'test/output/2.html'
   },
-  test: {
-    options: {
-      metadataFile: 'test/fixtures/metadata.yaml',
-      // metadata: {
-      //   title: 'TESTING'
-      // }
-    },
-    src: ['test/fixtures/1.md'],
-    dest: 'test/output/3.epub'
-  },
   withMetadata: {
   	options: {
-  		metadataFile: 'test/fixtures/metadata.yaml'
+  		metadataFile: 'test/fixtures/metadata.yaml',
+      metadata: {
+        title: 'TESTING'
+      }
   	},
     src: ['test/fixtures/1.md', 'test/fixtures/2.md'],
     dest: 'test/output/3.html'

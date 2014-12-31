@@ -28,6 +28,7 @@ module.exports = function(grunt) {
 
     // Iterate over all specified file groups.
     var taskOptions = this.options() || {};
+    ebookr.metadata(taskOptions.metadata || {});
     var promises = this.files.map(function(f) {
       var src = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
