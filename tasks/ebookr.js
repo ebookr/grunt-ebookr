@@ -28,7 +28,6 @@ module.exports = function(grunt) {
 
     // Iterate over all specified file groups.
     var taskOptions = this.options() || {};
-    ebookr.metadata(taskOptions.metadata || {});
     var promises = this.files.map(function(f) {
       var src = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
@@ -47,7 +46,7 @@ module.exports = function(grunt) {
           grunt.log.debug('No manifest file given; might cause problems when converting to MOBI');
         }
       }
-      var promise = ebookr.pandoc(src, taskOptions);
+      var promise = ebookr.convertFile(src, taskOptions);
       promise.then(function (error, stdout, stderr) {
         if (taskOptions.verbose) {
           if (stdout) grunt.log.println(stdout);

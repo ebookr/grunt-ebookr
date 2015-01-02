@@ -2,3 +2,6 @@
 documentclass: 'book'
 title: 'Test'
 author: '[Arne Hassel](http://icanhasweb.net)'
+status:
+    1: 'foo'
+    url: 'http://test.com/#'

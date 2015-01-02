@@ -35,4 +35,14 @@ describe('When converting files', function () {
       done();
     });
   });
+
+  it('should support extensions', function (done) {
+    exec('grunt ebookr:withExtensions', function (error, stdout, stderr) {
+      var actual = grunt.file.read('./test/output/status.html');
+      var expected = grunt.file.read('./test/expected/status.html');
+      expect(actual).to.eql(expected);
+      grunt.file.delete('./test/output/status.html');
+      done();
+    });
+  });
 });

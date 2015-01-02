@@ -7,6 +7,14 @@ module.exports = {
   	src: ['test/fixtures/1.md', 'test/fixtures/2.md'],
   	dest: 'test/output/2.html'
   },
+  withExtensions: {
+    options: {
+      metadataFile: 'test/fixtures/metadata.yaml',
+      extensions: ['status']
+    },
+    src: ['test/fixtures/status.md'],
+    dest: 'test/output/status.html'
+  },
   withMetadata: {
   	options: {
   		metadataFile: 'test/fixtures/metadata.yaml',
