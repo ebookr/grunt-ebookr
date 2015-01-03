@@ -46,7 +46,8 @@ module.exports = function(grunt) {
           grunt.log.debug('No manifest file given; might cause problems when converting to MOBI');
         }
       }
-      var promise = ebookr.convertFile(src, taskOptions);
+      ebookr.option.extend(taskOptions);
+      var promise = ebookr.convertFile(src);
       promise.then(function (error, stdout, stderr) {
         if (taskOptions.verbose) {
           if (stdout) grunt.log.println(stdout);
