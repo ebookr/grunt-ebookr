@@ -3,5 +3,6 @@ documentclass: 'book'
 title: 'Test'
 author: '[Arne Hassel](http://icanhasweb.net)'
 status:
-    1: 'foo'
+    0: 'foo'
+    1: 'bar'
     url: 'http://test.com/#'
