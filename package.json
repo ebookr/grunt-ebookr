@@ -1,7 +1,7 @@
 {
   "name": "grunt-ebookr",
   "description": "A Grunt plugin for ebookr",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "homepage": "https://github.com/ebookr/grunt-ebookr",
   "author": "Arne Hassel <arne.hassel@gmail.com> (http://icanhasweb.net)",
   "repository": {
@@ -44,7 +44,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "ebookr": "^0.4.8",
+    "ebookr": "^0.5.0",
     "q": "^1.1.2",
     "randomstring": "^1.0.3"
   },
